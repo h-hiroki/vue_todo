@@ -1,11 +1,23 @@
 new Vue({
   el: '#app',
   data: {
-    newItem: ''
+    newItem: '',
+    todos: [],
   },
   methods: {
     addItem: function(event) {
-      alert();
-    }
+      if (this.newItem == '') return;
+
+      let todo = {
+        item: this.newItem,
+        isDone: false,
+      };
+
+      this.todos.push(todo);
+      this.newItem = '';
+    },
+    deleteItem: function(index) {
+      this.todos.splice(index, 1);
+    },
   }
 })
